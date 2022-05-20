@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.MyViewHolder> {
@@ -34,7 +36,10 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
 
         holder.programmingName.setText(mProgrammingData.get(position).getProgrammingName());
         holder.programmingDescr.setText(mProgrammingData.get(position).getProgrammingDescr());
-        Glide.with(mContext).load(mProgrammingData.get(position).getImage().into(holder.img));
+
+        Glide.with(mContext)
+                .load(mProgrammingData.get(position).getImage())
+                .into(holder.image);
     }
 
     @Override
