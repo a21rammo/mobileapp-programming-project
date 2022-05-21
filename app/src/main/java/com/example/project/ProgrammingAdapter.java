@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.MyViewHolder> {
 
     private Context mContext;
-    private List<ProgrammingLanguages> mProgrammingData;
+    private ArrayList<ProgrammingLanguages> mProgrammingData;
 
-    public ProgrammingAdapter(Context mContext, List<ProgrammingLanguages> mData) {
-        this.mContext = mContext;
+    public ProgrammingAdapter(ArrayList<ProgrammingLanguages> mProgrammingData) {
         this.mProgrammingData = mProgrammingData;
     }
 
@@ -36,6 +36,7 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
 
         holder.programmingName.setText(mProgrammingData.get(position).getProgrammingName());
         holder.programmingDescr.setText(mProgrammingData.get(position).getProgrammingDescr());
+        holder.company.setText(mProgrammingData.get(position).getCompany());
 
         Glide.with(mContext)
                 .load(mProgrammingData.get(position).getImage())
@@ -51,12 +52,14 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
         TextView programmingName;
         TextView programmingDescr;
         ImageView image;
+        TextView company;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             programmingName = itemView.findViewById(R.id.programmingName_txt);
             programmingDescr = itemView.findViewById(R.id.programmingDescr_txt);
+            company = itemView.findViewById(R.id.company_txt);
             image = itemView.findViewById(R.id.logo_img);
         }
     }
