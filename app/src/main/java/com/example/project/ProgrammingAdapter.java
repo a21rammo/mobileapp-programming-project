@@ -36,11 +36,13 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
         holder.name.setText(mProgrammingData.get(position).getName());
         holder.location.setText(mProgrammingData.get(position).getLocation());
         holder.company.setText(mProgrammingData.get(position).getCompany());
-        holder.size.setText(mProgrammingData.get(position).getCompany());
+        holder.size.setText(mProgrammingData.get(position).getSize());
 
-        Glide.with(mContext)
+        /*Glide.with(mContext)
                 .load(mProgrammingData.get(position).getAuxdata())
                 .into(holder.auxdata);
+
+         */
     }
 
     @Override
@@ -53,7 +55,7 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
         TextView company;
         TextView location;
         TextView size;
-        ImageView auxdata;
+        // ImageView auxdata;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -61,7 +63,6 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
             name = itemView.findViewById(R.id.name_txt);
             location = itemView.findViewById(R.id.location_txt);
             company = itemView.findViewById(R.id.company_txt);
-            auxdata = itemView.findViewById(R.id.logo_img);
             size = itemView.findViewById(R.id.size_txt);
         }
     }

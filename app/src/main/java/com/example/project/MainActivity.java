@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         // Clearing the current arraylist before adding the newly fetched one.
         mProgrammingData.clear();
         mProgrammingData.addAll(temp);
+        programmingAdapter.notifyDataSetChanged();
 
     }
 

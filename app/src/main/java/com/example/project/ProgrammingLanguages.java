@@ -5,14 +5,12 @@ public class ProgrammingLanguages {
     String company;
     String location;
     int size;
-    String auxdata;
 
     public ProgrammingLanguages(String name, String company, String location, int size, String auxdata) {
         this.name = name;
         this.company = company;
         this.location = location;
         this.size = size;
-        this.auxdata = auxdata;
     }
 
     public String getName() {
@@ -47,11 +45,4 @@ public class ProgrammingLanguages {
         this.size = size;
     }
 
-    public String getAuxdata() {
-        return auxdata;
-    }
-
-    public void setAuxdata(String auxdata) {
-        this.auxdata = auxdata;
-    }
 }
