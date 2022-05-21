@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.MyViewHolder> {
 
@@ -34,13 +33,14 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.programmingName.setText(mProgrammingData.get(position).getProgrammingName());
-        holder.programmingDescr.setText(mProgrammingData.get(position).getProgrammingDescr());
+        holder.name.setText(mProgrammingData.get(position).getName());
+        holder.location.setText(mProgrammingData.get(position).getLocation());
         holder.company.setText(mProgrammingData.get(position).getCompany());
+        holder.size.setText(mProgrammingData.get(position).getCompany());
 
         Glide.with(mContext)
-                .load(mProgrammingData.get(position).getImage())
-                .into(holder.image);
+                .load(mProgrammingData.get(position).getAuxdata())
+                .into(holder.auxdata);
     }
 
     @Override
@@ -49,18 +49,20 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView programmingName;
-        TextView programmingDescr;
-        ImageView image;
+        TextView name;
         TextView company;
+        TextView location;
+        TextView size;
+        ImageView auxdata;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            programmingName = itemView.findViewById(R.id.programmingName_txt);
-            programmingDescr = itemView.findViewById(R.id.programmingDescr_txt);
+            name = itemView.findViewById(R.id.name_txt);
+            location = itemView.findViewById(R.id.location_txt);
             company = itemView.findViewById(R.id.company_txt);
-            image = itemView.findViewById(R.id.logo_img);
+            auxdata = itemView.findViewById(R.id.logo_img);
+            size = itemView.findViewById(R.id.size_txt);
         }
     }
 }

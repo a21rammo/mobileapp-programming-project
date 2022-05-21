@@ -1,8 +1,6 @@
 package com.example.project;
 
 import android.os.Bundle;
-
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,13 +13,14 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
     private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a21rammo";
     private RecyclerView recyclerView;
     private ProgrammingAdapter programmingAdapter;
+    private ArrayList<ProgrammingLanguages> mProgrammingData;
     private Gson gson;
     private Type type;
-    private ArrayList<ProgrammingLanguages> mProgrammingData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +28,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.mRecyclerView);
-        recyclerView = setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mProgrammingData = new ArrayList<ProgrammingLanguages>();
         programmingAdapter = new ProgrammingAdapter(mProgrammingData);
         recyclerView.setAdapter(programmingAdapter);
 
         gson = new Gson();
         type = new TypeToken<ArrayList<ProgrammingLanguages>>() {}.getType();
+
+         new JsonTask(this).execute(JSON_URL);
 
     }
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         // Clearing the current arraylist before adding the newly fetched one.
         mProgrammingData.clear();
         mProgrammingData.addAll(temp);
-        programmingAdapter.notifyDataSetChanged();
+
     }
 
 }

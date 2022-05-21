@@ -1,51 +1,26 @@
 package com.example.project;
 
 public class ProgrammingLanguages {
-    String programmingName;
-    String programmingDescr;
-    int programmingJobs;
-    int image;
+    String name;
     String company;
+    String location;
+    int size;
+    int auxdata;
 
-
-    public ProgrammingLanguages(String programmingName, String programmingDescr, int image, String company, int programmingJobs) {
-        this.programmingName = programmingName;
-        this.programmingDescr = programmingDescr;
-        this.image = image;
+    public ProgrammingLanguages(String name, String company, String location, int size, int auxdata) {
+        this.name = name;
         this.company = company;
-        this.programmingJobs = programmingJobs;
+        this.location = location;
+        this.size = size;
+        this.auxdata = auxdata;
     }
 
-    public String getProgrammingName() {
-        return programmingName;
+    public String getName() {
+        return name;
     }
 
-    public void setProgrammingName(String programmingName) {
-        this.programmingName = programmingName;
-    }
-
-    public String getProgrammingDescr() {
-        return programmingDescr;
-    }
-
-    public void setProgrammingDescr(String programmingDescr) {
-        this.programmingDescr = programmingDescr;
-    }
-
-    public int getImage() {
-        return image;
-    }
-
-    public void setImage(int image) {
-        this.image = image;
-    }
-
-    public int getProgrammingJobs() {
-        return programmingJobs;
-    }
-
-    public void setProgrammingJobs(int programmingJobs) {
-        this.programmingJobs = programmingJobs;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCompany() {
@@ -56,6 +31,27 @@ public class ProgrammingLanguages {
         this.company = company;
     }
 
+    public String getLocation() {
+        return location;
+    }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getAuxdata() {
+        return auxdata;
+    }
+
+    public void setAuxdata(int auxdata) {
+        this.auxdata = auxdata;
+    }
 }
