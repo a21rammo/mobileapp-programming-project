@@ -36,7 +36,7 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
         holder.name.setText(mProgrammingData.get(position).getName());
         holder.location.setText(mProgrammingData.get(position).getLocation());
         holder.company.setText(mProgrammingData.get(position).getCompany());
-        holder.size.setText(mProgrammingData.get(position).getSize());
+        holder.size.setText(mProgrammingData.get(position).getSize()+"");
 
         /*Glide.with(mContext)
                 .load(mProgrammingData.get(position).getAuxdata())
