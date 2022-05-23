@@ -1,7 +1,11 @@
 package com.example.project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,44 +17,41 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
-    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=a21rammo";
-    private RecyclerView recyclerView;
-    private ProgrammingAdapter programmingAdapter;
-    private ArrayList<ProgrammingLanguages> mProgrammingData;
-    private Gson gson;
-    private Type type;
-
+public class MainActivity extends AppCompatActivity {
+    Button information_btn;
+    Button about_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        recyclerView = findViewById(R.id.mRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mProgrammingData = new ArrayList<ProgrammingLanguages>();
-        programmingAdapter = new ProgrammingAdapter(mProgrammingData);
-        recyclerView.setAdapter(programmingAdapter);
+        information_btn = findViewById(R.id.information_btn);
+        information_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickInformation();
+            }
+        });
 
-        gson = new Gson();
-        type = new TypeToken<ArrayList<ProgrammingLanguages>>() {}.getType();
-
-         new JsonTask(this).execute(JSON_URL);
-
+        about_btn = findViewById(R.id.about_btn);
+        about_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickAbout();
+            }
+        });
+        
     }
 
-    @Override
-    public void onPostExecute(String json) {
-        Log.d("MainActivity", json);
-        // Creating a new temporary list, We will fetch the json data and put it in there before updating the mountain list.
-        ArrayList<ProgrammingLanguages> temp = new ArrayList <ProgrammingLanguages>();
-        temp = gson.fromJson(json, type);
-        // Clearing the current arraylist before adding the newly fetched one.
-        mProgrammingData.clear();
-        mProgrammingData.addAll(temp);
-        programmingAdapter.notifyDataSetChanged();
+    private void onClickAbout() {
+        Intent intent = new Intent(MainActivity.this, About.class);
+        startActivity(intent);
+    }
 
+    private void onClickInformation() {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(intent);
     }
 
 }
