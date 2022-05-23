@@ -4,6 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".About">
+    tools:context=".About"
+    android:background="@drawable/gradient_normal">
+
+    <TextView
+        android:id="@+id/aboutPage_txt"
+        android:layout_width="436dp"
+        android:layout_height="85dp"
+        android:background="@color/dark_green"
+        android:gravity="center"
+        android:text="About"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/pythonTitle_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Python - Artificial Intelligence and Machine Learning"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutPage_txt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/pythonDescr_txt"
+        android:layout_width="410dp"
+        android:layout_height="136dp"
+        android:text="Python is a programming langauge that has grown popularity lately.   The language can be used to build almost anything. It is although best when using it on Articifical Intelligence, Machine Learning or Data Analytics."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pythonTitle_txt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/javascriptTitle_txt"
+        android:layout_width="410dp"
+        android:layout_height="32dp"
+        android:text="JavaScript - Web Development"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pythonDescr_txt"
+        app:layout_constraintVertical_bias="0.043" />
+
+    <TextView
+        android:id="@+id/javascriptDescr_txt"
+        android:layout_width="419dp"
+        android:layout_height="131dp"
+        android:text="As a key programming language with HTML and CSS, Javascript is used to design web sites. The language has multiple frameworks built on top of it, and is considered primary when it comes to web design."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/javascriptTitle_txt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/javaTitle_txt"
+        android:layout_width="418dp"
+        android:layout_height="38dp"
+        android:text="Java - Application Development"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/javascriptDescr_txt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/javaDesct_txt"
+        android:layout_width="430dp"
+        android:layout_height="139dp"
+        android:text="As a secure, reliable, and scalable programming language, Java is popular among developing applications. Java is also widely used in Android, making it an essential requirement for Android developers."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/javaTitle_txt"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/aboutBack_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_normal"
+        android:text="X"
+        app:layout_constraintBottom_toBottomOf="@+id/aboutPage_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.996"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
