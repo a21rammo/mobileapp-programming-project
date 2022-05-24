@@ -45,7 +45,8 @@
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/information_txt"
@@ -59,7 +60,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/programInfo_txt"
-        app:layout_constraintVertical_bias="0.29" />
+        app:layout_constraintVertical_bias="0.29"
+        />
 
     <TextView
         android:id="@+id/about_txt"
