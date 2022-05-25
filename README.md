@@ -1,42 +1,85 @@
+There was a plan to create a frontpage consisting of two buttons. Each button was intended to direct you to a specific page containing specific information. Therefore, the main activity consists primarily of locating the button IDs. Our next step is to set the onclicklistener to the button that will execute the code you write in onClick(View) when the user presses the button.The class involves two distinct methods that refer intents to their correct page.
 
-# Rapport
-
-**Skriv din rapport här!**
-
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Example of onclicklistener and intents
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+ about_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onClickAbout();
+            }
+        });
+```
+
+```
+private void onClickAbout() {
+        Intent aboutIntent = new Intent(MainActivity.this, About.class);
+        startActivity(aboutIntent);
     }
-}
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+Next, it was necessary to implement JSON data by putting the data into the admin interface of the Lenasys site. It is necessary to have admin permission to request JSON data from a URL. This permission must be granted in *AndroidManifest.xml**. Afterwards, a new class is created to choose which data will be taken from the JSON data. A new class will consist of a constructor and setters/getters containing the data that will be shown from JSON. In this project this class is called **ProgrammingLanguages.java**.
 
-Läs gärna:
+After the data has been sorted for each data type, we need to set up an adapter object. The adapter is responsible for sorting the view based on each data type. This class is contains an arraylist of *ProgrammingLanguages**. This class contains built-in methods that are provided by the IDE when extending the class.``public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.MyViewHolder>``
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+The *onCreateViewHolder** creates a new RecyclerView Viewholder. The method consists of LayoutInflater which instantiates a layout with its corresponding view objects.It has to consist of which xml file it will attach its view objects to.
+
+```
+	    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_row, parent, false);
+        return new ProgrammingAdapter.MyViewHolder(view);
+    }
+```
+
+There after there will be an inner class which consist of Super** and the different data sets that are redirected to the correct xml IDs.
+
+```
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        TextView name;
+        TextView company;
+        TextView location;
+        TextView size;
+
+
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.name_txt);
+            location = itemView.findViewById(R.id.location_txt);
+            company = itemView.findViewById(R.id.company_txt);
+            size = itemView.findViewById(R.id.size_txt);
+        }
+    }
+```
+
+OnBindViewHolder is to display the data at the corrected position. This method also updates the contents of the Recyclerler viewholder for each item and its respective position. The problem that occured was with converting integers to strings. In this case a + “” had to be added. To get the data the different getters are used from ProgrammingLanguages class
+
+```
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        holder.name.setText(mProgrammingData.get(position).getName());
+        holder.location.setText(mProgrammingData.get(position).getLocation());
+        holder.company.setText(mProgrammingData.get(position).getCompany());
+        holder.size.setText(mProgrammingData.get(position).getSize()+"");
+    }
+```
+
+The getItemCount method returns the total numbers of items in the data set which is inside of ArrayList ProgrammingLangauges. In ProgrammingAdapter when called the object, it got named *mProgrammingData**
+
+The SecondActivity consists of many different data variables. All of them are private which means the member data is only visible within the class, not from any other classes. The JSON url consists also a final which means the url that is set can’t be changed. Recyclerview has to be connected to the recyclerview inside of the xml file. Afterwards we set the recyclerview to linearlayout and get our data from ArrayList from ProgrammingAdapter. The recyclerview has also to be set to ProgrammingAdapter.The GSON is used to unload the data from JSON.
+
+The data will be fetched with the help of a class given from the examinator, called JsonTask. That class consists of Asynchronous task which in short it will create a seperate thread to run in background in order to parse JSON data. In SecondActivity we will create a method called onPostExecute which will fetch JSON data and put it in a temporary ARrayList and clearly current ArrayList from Adapter and add the newly fetched one.
+
+```
+    @Override
+    public void onPostExecute(String json) {
+        Log.d("SecondActivity", json);
+        // Creating a new temporary list, We will fetch the json data and put it in there before updating the mountain list.
+        ArrayList<ProgrammingLanguages> temp = new ArrayList <ProgrammingLanguages>();
+        temp = gson.fromJson(json, type);
+        // Clearing the current arraylist before adding the newly fetched one.
+        mProgrammingData.clear();
+        mProgrammingData.addAll(temp);
+        programmingAdapter.notifyDataSetChanged();
+
+    }
+```

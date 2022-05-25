@@ -16,7 +16,6 @@ import java.util.ArrayList;
 
 public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.MyViewHolder> {
 
-    private Context mContext;
     private ArrayList<ProgrammingLanguages> mProgrammingData;
 
     public ProgrammingAdapter(ArrayList<ProgrammingLanguages> mProgrammingData) {
@@ -32,17 +31,10 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         holder.name.setText(mProgrammingData.get(position).getName());
         holder.location.setText(mProgrammingData.get(position).getLocation());
         holder.company.setText(mProgrammingData.get(position).getCompany());
         holder.size.setText(mProgrammingData.get(position).getSize()+"");
-
-        /*Glide.with(mContext)
-                .load(mProgrammingData.get(position).getAuxdata())
-                .into(holder.auxdata);
-
-         */
     }
 
     @Override
@@ -55,8 +47,6 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
         TextView company;
         TextView location;
         TextView size;
-        // ImageView auxdata;
-
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

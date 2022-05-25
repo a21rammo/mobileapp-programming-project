@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
                 onClickInformation();
             }
         });
-
         about_btn = findViewById(R.id.about_btn);
         about_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,17 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 onClickAbout();
             }
         });
-        
     }
-
     private void onClickAbout() {
-        Intent intent = new Intent(MainActivity.this, About.class);
-        startActivity(intent);
+        Intent aboutIntent = new Intent(MainActivity.this, About.class);
+        startActivity(aboutIntent);
     }
-
     private void onClickInformation() {
-        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-        startActivity(intent);
+        Intent infoIntent = new Intent(MainActivity.this, SecondActivity.class);
+        startActivity(infoIntent);
     }
-
 }
