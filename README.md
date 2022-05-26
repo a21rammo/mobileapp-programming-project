@@ -1,7 +1,7 @@
 There was a plan to create a frontpage consisting of two buttons. Each button was intended to direct you to a specific page containing specific information. Therefore, the main activity consists primarily of locating the button IDs. Our next step is to set the onclicklistener to the button that will execute the code you write in onClick(View) when the user presses the button.The class involves two distinct methods that refer intents to their correct page.
 
 Example of onclicklistener and intents
-
+![] (lofi-androidProject)
 ```
  about_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -19,11 +19,11 @@ private void onClickAbout() {
 ```
 
 
-Next, it was necessary to implement JSON data by putting the data into the admin interface of the Lenasys site. It is necessary to have admin permission to request JSON data from a URL. This permission must be granted in *AndroidManifest.xml**. Afterwards, a new class is created to choose which data will be taken from the JSON data. A new class will consist of a constructor and setters/getters containing the data that will be shown from JSON. In this project this class is called **ProgrammingLanguages.java**.
+Next, it was necessary to implement JSON data by putting the data into the admin interface of the Lenasys site. It is necessary to have admin permission to request JSON data from a URL. This permission must be granted in *AndroidManifest.xml**. Afterwards, a new class is created to choose which data will be taken from the JSON data. A new class will consist of a constructor and setters/getters containing the data that will be shown from JSON. In this project this class is called **ProgrammingLanguages.java**. In this case the strings name, company and location also integer size was included in **ProgrammingLanguages**
 
 After the data has been sorted for each data type, we need to set up an adapter object. The adapter is responsible for sorting the view based on each data type. This class is contains an arraylist of *ProgrammingLanguages**. This class contains built-in methods that are provided by the IDE when extending the class.``public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.MyViewHolder>``
 
-The *onCreateViewHolder** creates a new RecyclerView Viewholder. The method consists of LayoutInflater which instantiates a layout with its corresponding view objects.It has to consist of which xml file it will attach its view objects to.
+The **onCreateViewHolder** creates a new RecyclerView Viewholder. The method consists of LayoutInflater which instantiates a layout with its corresponding view objects.It has to consist of which xml file it will attach its view objects to.
 
 ```
 	    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,7 +67,7 @@ The getItemCount method returns the total numbers of items in the data set which
 
 The SecondActivity consists of many different data variables. All of them are private which means the member data is only visible within the class, not from any other classes. The JSON url consists also a final which means the url that is set can’t be changed. Recyclerview has to be connected to the recyclerview inside of the xml file. Afterwards we set the recyclerview to linearlayout and get our data from ArrayList from ProgrammingAdapter. The recyclerview has also to be set to ProgrammingAdapter.The GSON is used to unload the data from JSON.
 
-The data will be fetched with the help of a class given from the examinator, called JsonTask. That class consists of Asynchronous task which in short it will create a seperate thread to run in background in order to parse JSON data. In SecondActivity we will create a method called onPostExecute which will fetch JSON data and put it in a temporary ARrayList and clearly current ArrayList from Adapter and add the newly fetched one.
+The data will be fetched with the help of a class given from the examinator, called JsonTask. That class consists of Asynchronous task which in short it will create a seperate thread to run in background in order to parse JSON data. In SecondActivity we will create a method called onPostExecute which will fetch JSON data and put it in a temporary ArrayList and clear current ArrayList from Adapter and add the newly fetched one.
 
 ```
     @Override
@@ -83,3 +83,5 @@ The data will be fetched with the help of a class given from the examinator, cal
 
     }
 ```
+
+The information about how many jobs there were in USA was taken from ``https://www.northeastern.edu/graduate/blog/most-popular-programming-languages/``.
