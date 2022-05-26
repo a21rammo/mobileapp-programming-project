@@ -2,6 +2,7 @@ There was a plan to create a frontpage consisting of two buttons. Each button wa
 
 
 ![](lofi-androidProject.jpg)
+
 Example of onclicklistener and intents
 ```
  about_btn.setOnClickListener(new View.OnClickListener() {
