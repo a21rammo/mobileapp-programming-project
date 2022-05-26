@@ -1,8 +1,7 @@
 There was a plan to create a frontpage consisting of two buttons. Each button was intended to direct you to a specific page containing specific information. Therefore, the main activity consists primarily of locating the button IDs. Our next step is to set the onclicklistener to the button that will execute the code you write in onClick(View) when the user presses the button.The class involves two distinct methods that refer intents to their correct page.
 
 Example of onclicklistener and intents
-
-![](lofi-androidProject)
+![](lofi-androidProject.jpg)
 ```
  about_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,3 +85,8 @@ The data will be fetched with the help of a class given from the examinator, cal
 ```
 
 The information about how many jobs there were in USA was taken from ``https://www.northeastern.edu/graduate/blog/most-popular-programming-languages/``.
+
+
+![](main-page.png)
+![](information-page.png)
+![](about-page.png)
