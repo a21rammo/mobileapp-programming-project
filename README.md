@@ -85,9 +85,9 @@ The data will be fetched with the help of a class given from the examinator, cal
     }
 ```
 
-The information about how many jobs there were in USA was taken from ``https://www.northeastern.edu/graduate/blog/most-popular-programming-languages/``.
-
 
 ![](main-page.png)
 ![](information-page.png)
 ![](about-page.png)
+
+The information about how many jobs there were in USA was taken from ``https://www.northeastern.edu/graduate/blog/most-popular-programming-languages/``.
